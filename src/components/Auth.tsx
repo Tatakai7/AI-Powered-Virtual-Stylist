@@ -59,15 +59,15 @@ export function Auth() {
             <div className="grid grid-cols-3 gap-6 pt-8">
               <div className="space-y-2">
                 <div className="text-4xl font-bold text-gradient">10K+</div>
-                <div className="text-sm text-gray-300 font-medium">Outfits Created</div>
+                <div className="text-sm text-pink-500 font-medium">Outfits Created</div>
               </div>
               <div className="space-y-2">
                 <div className="text-4xl font-bold text-gradient">98%</div>
-                <div className="text-sm text-gray-300 font-medium">Satisfaction</div>
+                <div className="text-sm text-pink-500 font-medium">Satisfaction</div>
               </div>
               <div className="space-y-2">
                 <div className="text-4xl font-bold text-gradient">5K+</div>
-                <div className="text-sm text-gray-300 font-medium">Happy Users</div>
+                <div className="text-sm text-pink-500 font-medium">Happy Users</div>
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@ export function Auth() {
                   className={`flex-1 py-3 rounded-xl font-semibold transition-all ${
                     !isSignUp
                       ? 'bg-gradient-to-r from-pink-500 to-orange-500 text-white shadow-lg'
-                      : 'text-gray-400 hover:text-white'
+                      : 'text-gray-500 hover:text-white'
                   }`}
                 >
                   Sign In
@@ -103,7 +103,7 @@ export function Auth() {
                   className={`flex-1 py-3 rounded-xl font-semibold transition-all ${
                     isSignUp
                       ? 'bg-gradient-to-r from-pink-500 to-orange-500 text-white shadow-lg'
-                      : 'text-gray-400 hover:text-white'
+                      : 'text-gray-500 hover:text-white'
                   }`}
                 >
                   Sign Up
@@ -117,14 +117,14 @@ export function Auth() {
                       Full Name
                     </label>
                     <div className="relative">
-                      <UserIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-pink-400 transition" />
+                      <UserIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-pink-400 transition" />
                       <input
                         id="fullName"
                         type="text"
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
                         required={isSignUp}
-                        className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:border-pink-400 focus:ring-2 focus:ring-pink-400/20 transition outline-none"
+                        className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-pink-400 focus:ring-2 focus:ring-pink-400/20 transition outline-none"
                         placeholder="Enter your name"
                       />
                     </div>
@@ -136,14 +136,14 @@ export function Auth() {
                     Email Address
                   </label>
                   <div className="relative">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-pink-400 transition" />
+                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-pink-400 transition" />
                     <input
                       id="email"
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:border-pink-400 focus:ring-2 focus:ring-pink-400/20 transition outline-none"
+                      className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-pink-400 focus:ring-2 focus:ring-pink-400/20 transition outline-none"
                       placeholder="you@example.com"
                     />
                   </div>
@@ -154,14 +154,14 @@ export function Auth() {
                     Password
                   </label>
                   <div className="relative">
-                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-pink-400 transition" />
+                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-pink-400 transition" />
                     <input
                       id="password"
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
-                      className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:border-pink-400 focus:ring-2 focus:ring-pink-400/20 transition outline-none"
+                      className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-pink-400 focus:ring-2 focus:ring-pink-400/20 transition outline-none"
                       placeholder="Enter your password"
                     />
                   </div>

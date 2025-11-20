@@ -37,14 +37,6 @@ export function Dashboard() {
 
             <div className="flex items-center gap-4">
               <button
-                onClick={signOut}
-                className="hidden sm:flex items-center gap-2 px-5 py-2.5 text-gray-800 hover:text-gray-900 bg-white hover:bg-gray-50 rounded-xl transition border border-gray-200 font-semibold"
-              >
-                <LogOut className="w-4 h-4" />
-                <span>Sign Out</span>
-              </button>
-
-              <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="lg:hidden p-2 text-gray-800 hover:bg-gray-100 rounded-xl transition"
               >
@@ -85,16 +77,7 @@ export function Dashboard() {
                 );
               })}
 
-              <button
-                onClick={signOut}
-                className="sm:hidden w-full flex items-center gap-4 px-5 py-4 rounded-xl text-red-600 hover:bg-red-50 transition mt-4"
-              >
-                <LogOut className="w-6 h-6" />
-                <div className="text-left">
-                  <div className="font-semibold">Sign Out</div>
-                  <div className="text-xs text-red-500 mt-0.5">End your session</div>
-                </div>
-              </button>
+
             </div>
           </aside>
 
@@ -108,6 +91,14 @@ export function Dashboard() {
           </main>
         </div>
       </div>
+
+      <button
+        onClick={signOut}
+        className="fixed bottom-4 left-4 flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-xl transition shadow-lg z-50"
+      >
+        <LogOut className="w-4 h-4" />
+        <span className="font-semibold">Sign Out</span>
+      </button>
     </div>
   );
 }
