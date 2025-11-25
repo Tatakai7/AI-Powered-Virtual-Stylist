@@ -83,13 +83,43 @@ npm run build
 
 ---
 
-## 🔐 Environment Variables
+## 🔐 Setting Up Supabase Environment Variables
 
-Your .env file may include:
+To connect the Virtual Stylist app to your Supabase backend, you need two environment variables:
 
 ```bash
 VITE_SUPABASE_URL=
 VITE_SUPABASE_ANON_KEY=
+```
+
+Follow these steps to obtain them:
+
+### ✅ Step 1: Go to Supabase
+
+Visit the Supabase website:
+👉 https://supabase.com
+
+Log in to your account or create one if needed.
+
+### ✅ Step 2: Open Your Project
+
+1. From the dashboard, select your project.
+2. Navigate to Project Settings (bottom-left sidebar).
+
+### ✅ Step 3: Find API Credentials
+
+1. In the settings menu, click API.
+2. Under Project API Keys, you will find:
+   • Project URL → This is your VITE_SUPABASE_URL
+   • anon public key → This is your VITE_SUPABASE_ANON_KEY
+
+### ✅ Step 4: Add Them to Your .env File
+
+Create or edit the .env file at the root of your project:
+
+```bash
+VITE_SUPABASE_URL="https://your-project-id.supabase.co"
+VITE_SUPABASE_ANON_KEY="your-anon-public-key"
 ```
 
 ---
