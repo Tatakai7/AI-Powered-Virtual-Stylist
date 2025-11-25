@@ -1,4 +1,4 @@
-# 🌟 AI-Powered Virtual Stylist
+## 🌟 AI-Powered Virtual Stylist
 
 Your personal intelligent fashion companion — suggesting outfits based on wardrobe, weather, and style preferences.
 
@@ -58,28 +58,6 @@ Backend (Optional / Future Integration)
 AI (Optional Integration)
 • OpenAI / TensorFlow.js
 • Rule-based outfit generator
-
----
-
-## 📂 Project Structure
-
-    AI-Powered-Virtual-Stylist/
-
-├─ .env
-├─ .gitignore
-├─ index.html
-├─ package.json
-├─ tailwind.config.js
-├─ tsconfig.json
-├─ vite.config.ts
-├─ src/
-│ ├─ components/
-│ ├─ assets/
-│ ├─ hooks/
-│ ├─ pages/
-│ ├─ styles/
-│ └─ App.tsx
-└─ node_modules/
 
 ---
 
