@@ -9,23 +9,5 @@ export default defineConfig({
   },
   server: {
     port: 3001,
-    proxy: {
-      '/auth': {
-        target: 'https://kfoytstbhqiqaldkwoqb.supabase.co',
-        changeOrigin: true,
-      },
-      '/rest': {
-        target: 'https://kfoytstbhqiqaldkwoqb.supabase.co',
-        changeOrigin: true,
-      },
-      '/storage': {
-        target: 'https://kfoytstbhqiqaldkwoqb.supabase.co',
-        changeOrigin: true,
-      },
-      '/realtime': {
-        target: 'https://kfoytstbhqiqaldkwoqb.supabase.co',
-        changeOrigin: true,
-      },
-    },
   },
 });
