@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../firebase/supabase';
 import { useAuth } from '../contexts/AuthContext';
-import type { WardrobeItem } from '../lib/supabase';
+import type { WardrobeItem } from '../firebase/supabase';
 import { Plus, X, Shirt, Tag, Calendar, Palette, Sparkles } from 'lucide-react';
 
 const CATEGORIES = ['tops', 'bottoms', 'shoes', 'accessories', 'outerwear'];

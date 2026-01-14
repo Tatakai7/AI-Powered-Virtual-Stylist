@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../firebase/supabase';
 import { useAuth } from '../contexts/AuthContext';
 import { User, MapPin, Palette } from 'lucide-react';
 

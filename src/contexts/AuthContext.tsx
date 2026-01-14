@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { supabase } from '../lib/supabase';
-import type { User } from '@supabase/supabase-js';
+import { auth, db } from '../firebase/firebase';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut as firebaseSignOut, onAuthStateChanged, type User } from 'firebase/auth';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
 
 interface AuthContextType {
   user: User | null;
@@ -17,79 +18,50 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
       setLoading(false);
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      (async () => {
-        setUser(session?.user ?? null);
-      })();
-    });
-
-    return () => subscription.unsubscribe();
+    return unsubscribe;
   }, []);
 
   const signUp = async (email: string, password: string, fullName: string) => {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    await setDoc(doc(db, 'profiles', user.uid), {
+      id: user.uid,
+      full_name: fullName,
+      style_preferences: {},
+      location: '',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
     });
-
-    if (error) throw error;
-
-    if (data.user) {
-      const { error: profileError } = await supabase
-        .from('profiles')
-        .insert({
-          id: data.user.id,
-          full_name: fullName,
-          style_preferences: {},
-          location: '',
-        });
-
-      if (profileError) throw profileError;
-    }
   };
 
   const signIn = async (email: string, password: string) => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    if (error) throw error;
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
 
     // Ensure profile exists
-    if (data.user) {
-      const { data: profile, error: profileError } = await supabase
-        .from('profiles')
-        .select('id')
-        .eq('id', data.user.id)
-        .single();
+    const profileRef = doc(db, 'profiles', user.uid);
+    const profileSnap = await getDoc(profileRef);
 
-      if (profileError && profileError.code === 'PGRST116') { // No rows returned
-        // Create profile
-        const { error: insertError } = await supabase
-          .from('profiles')
-          .insert({
-            id: data.user.id,
-            full_name: data.user.email?.split('@')[0] || '', // Use email prefix as name
-            style_preferences: {},
-            location: '',
-          });
-
-        if (insertError) throw insertError;
-      } else if (profileError) {
-        throw profileError;
-      }
+    if (!profileSnap.exists()) {
+      await setDoc(profileRef, {
+        id: user.uid,
+        full_name: user.email?.split('@')[0] || '',
+        style_preferences: {},
+        location: '',
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      });
     }
   };
 
   const signOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) throw error;
+    await firebaseSignOut(auth);
   };
 
   return (

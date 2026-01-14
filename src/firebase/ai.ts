@@ -1,4 +1,4 @@
-import type { WardrobeItem } from './supabase';
+import type { WardrobeItem } from './firebase';
 
 export interface WeatherData {
   temp: number;

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../firebase/supabase';
 import { useAuth } from '../contexts/AuthContext';
-import type { Outfit, WardrobeItem } from '../lib/supabase';
+import type { Outfit, WardrobeItem } from '../firebase/supabase';
 import { Heart, Trash2, Share2, Filter } from 'lucide-react';
 
 export function OutfitCatalog() {

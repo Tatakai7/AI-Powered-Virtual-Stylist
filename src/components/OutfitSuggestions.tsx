@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../firebase/supabase';
 import { useAuth } from '../contexts/AuthContext';
-import type { WardrobeItem, Outfit } from '../lib/supabase';
-import { generateOutfitSuggestions, fetchWeather, type WeatherData } from '../lib/ai';
+import type { WardrobeItem, Outfit } from '../firebase/supabase';
+import { generateOutfitSuggestions, fetchWeather, type WeatherData } from '../firebase/ai';
 import { Sparkles, Heart, Save, Cloud, Sun, CloudRain, Snowflake, Wind } from 'lucide-react';
 
 const OCCASIONS = ['casual', 'work', 'formal', 'date', 'workout', 'party', 'weekend'];
